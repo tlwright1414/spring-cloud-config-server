@@ -1,0 +1,39 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tlwright1414/spring-cloud-config-server-apps
+          search-paths:
+          - app*
+          force-pull: true
+          repos:
+            common:
+              pattern:
+              - "*/common"
+              uri: https://github.com/tlwright1414/spring-cloud-config-server-common
+              search-paths:
+              - service*
+              - set*
+
+          #uri: /Users/twright/dev/java/configprops
+
+server:
+  port: 8888
+
+#crypto:
+#  policy: unlimited
+
+encrypt:
+  key-store:
+    location: classpath:server.jks
+    password: asdf9876
+    alias: mytestkey
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root
+
